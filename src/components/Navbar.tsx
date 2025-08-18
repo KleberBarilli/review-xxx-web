@@ -1,45 +1,120 @@
 "use client";
+
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname, useRouter } from "@/i18n/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import LanguageToggle from "./LanguageToggle";
+import SearchGames from "./SearchGames";
 
 export default function Navbar() {
-  const t = useTranslations("nav");
-  const router = useRouter();
+  const n = useTranslations("nav");
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
-  const changeLocale = (locale: "en" | "pt") => {
-    router.replace({ pathname }, { locale });
-  };
+  const isActive = (href: string) => pathname === href;
+  const linkClass = (href: string) =>
+    `px-3 py-2 rounded-md text-sm font-medium transition-colors
+     ${isActive(href) ? "text-primary" : "text-foreground/80 hover:text-primary"}`;
 
   return (
-    <header className="flex items-center justify-between py-4">
-      <Link href="/" className="text-lg font-semibold">
-        {t("home")} {/* ou t de common.brand se preferir */}
-      </Link>
+    <header className="border-foreground/10 bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur">
+      <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
+        {/* Logo/brand */}
+        <Link href="/" className="text-primary text-lg font-semibold">
+          Review XXX
+        </Link>
 
-      <nav className="flex items-center gap-4">
-        <Link href="/">{t("home")}</Link>
-        <Link href="/logs">{t("logs")}</Link>
-        <Link href="/lists">{t("lists")}</Link>
-        <Link href="/reviews">{t("reviews")}</Link>
-        <Link href="/likes">{t("likes")}</Link>
+        {/* Links (desktop) */}
+        <div className="hidden items-center gap-2 md:flex">
+          <Link href="/" className={linkClass("/")}>
+            {n("home")}
+          </Link>
+          <Link href="/signIn" className={linkClass("/signIn")}>
+            {n("signIn")}
+          </Link>
+          <Link href="/signUp" className={linkClass("/signUp")}>
+            {n("signUp")}
+          </Link>
+          <Link href="/games" className={linkClass("/games")}>
+            {n("games")}
+          </Link>
 
-        <div className="ml-4 flex items-center gap-2">
-          <span className="text-sm opacity-70">{t("language")}:</span>
-          <button
-            onClick={() => changeLocale("en")}
-            className="rounded px-2 py-1 hover:bg-white/10"
-          >
-            EN
-          </button>
-          <button
-            onClick={() => changeLocale("pt")}
-            className="rounded px-2 py-1 hover:bg-white/10"
-          >
-            PT
-          </button>
+          <div className="ml-3">
+            <LanguageToggle />
+          </div>
+          {/* SEARCH (desktop) */}
+          <SearchGames className="ml-2 w-40 lg:w-64" />
         </div>
+
+        {/* Botão hambúrguer (mobile) */}
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="hover:bg-foreground/5 inline-flex h-10 w-10 items-center justify-center rounded-md md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          aria-label="Toggle menu"
+        >
+          <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor">
+            <path
+              d={open ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
       </nav>
+
+      {/* Menu mobile */}
+      <div
+        id="mobile-menu"
+        className={`md:hidden ${open ? "block" : "hidden"} border-foreground/10 bg-background border-t`}
+      >
+        <div className="mx-auto max-w-6xl px-4 py-2">
+          <ul className="flex flex-col gap-1 py-2">
+            <li>
+              <Link href="/" className={linkClass("/") + " block"} onClick={() => setOpen(false)}>
+                {n("home")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/signIn"
+                className={linkClass("/signIn") + " block"}
+                onClick={() => setOpen(false)}
+              >
+                {n("signIn")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/signUp"
+                className={linkClass("/signUp") + " block"}
+                onClick={() => setOpen(false)}
+              >
+                {n("signUp")}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/games"
+                className={linkClass("/games") + " block"}
+                onClick={() => setOpen(false)}
+              >
+                {n("games")}
+              </Link>
+            </li>
+
+            <li className="mt-2">
+              <LanguageToggle />
+            </li>
+            {/* SEARCH (mobile) */}
+            <li className="mt-2">
+              <SearchGames className="w-full" />
+            </li>
+          </ul>
+        </div>
+      </div>
     </header>
   );
 }

@@ -1,14 +1,13 @@
 import { getRequestConfig } from "next-intl/server";
-import type { AbstractIntlMessages } from "next-intl";
+import { hasLocale } from "next-intl";
+import { routing } from "./routing";
 
-export default getRequestConfig(async ({ locale }) => {
-  if (!locale) {
-    throw new Error("Locale is required");
-  }
-  const messages: AbstractIntlMessages = (await import(`@/messages/${locale}.json`)).default;
+export default getRequestConfig(async ({ requestLocale }) => {
+  const requested = await requestLocale;
+  const locale = hasLocale(routing.locales, requested) ? requested : routing.defaultLocale;
 
   return {
     locale,
-    messages,
+    messages: (await import(`../messages/${locale}.json`)).default,
   };
 });

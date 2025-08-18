@@ -1,23 +1,31 @@
-import "@/app/globals.css";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import "./globals.css";
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 
-export default async function LocaleLayout({
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const messages = await getMessages();
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className="min-h-screen">
-        <NextIntlClientProvider locale={locale} messages={messages}>
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider>
           <Navbar />
-          <div className="mx-auto max-w-5xl px-4 py-6">{children}</div>
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>

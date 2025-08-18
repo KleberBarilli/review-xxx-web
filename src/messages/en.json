@@ -3,14 +3,18 @@
     "brand": "Review XXX"
   },
   "nav": {
+    "about": "About",
+    "contact": "Contact",
     "home": "Home",
-    "logs": "Logs",
-    "lists": "Lists",
+    "games": "Games",
     "reviews": "Reviews",
     "likes": "Likes",
     "language": "Language",
-    "signin": "Sign in",
-    "signout": "Sign out"
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "search": "Search",
+    "search_placeholder": "Search games...",
+    "clear": "Clear"
   },
   "home": {
     "title": "Your gaming journal",

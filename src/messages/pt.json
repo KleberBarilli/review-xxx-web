@@ -3,14 +3,18 @@
     "brand": "Review XXX"
   },
   "nav": {
+    "about": "Sobre",
+    "contact": "Contato",
     "home": "Início",
-    "logs": "Logs",
-    "lists": "Listas",
+    "games": "Jogos",
     "reviews": "Reviews",
     "likes": "Curtidas",
     "language": "Idioma",
-    "signin": "Entrar",
-    "signout": "Sair"
+    "signIn": "Entrar",
+    "signUp": "Cadastrar",
+    "search": "Buscar",
+    "search_placeholder": "Buscar jogos...",
+    "clear": "Limpar"
   },
   "home": {
     "title": "Seu diário de jogos",
