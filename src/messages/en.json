@@ -1,0 +1,19 @@
+{
+  "common": {
+    "brand": "Review XXX"
+  },
+  "nav": {
+    "home": "Home",
+    "logs": "Logs",
+    "lists": "Lists",
+    "reviews": "Reviews",
+    "likes": "Likes",
+    "language": "Language",
+    "signin": "Sign in",
+    "signout": "Sign out"
+  },
+  "home": {
+    "title": "Your gaming journal",
+    "subtitle": "Log your sessions, reviews and lists."
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "common": {
+    "brand": "Review XXX"
+  },
+  "nav": {
+    "home": "Início",
+    "logs": "Logs",
+    "lists": "Listas",
+    "reviews": "Reviews",
+    "likes": "Curtidas",
+    "language": "Idioma",
+    "signin": "Entrar",
+    "signout": "Sair"
+  },
+  "home": {
+    "title": "Seu diário de jogos",
+    "subtitle": "Registre sessões, reviews e listas."
+  }
+}
