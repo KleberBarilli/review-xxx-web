@@ -2,7 +2,8 @@
   "common": {
     "brand": "Review XXX",
     "loading":"Carregando...",
-    "upcomings":"Próximos lançamentos"
+    "upcomings":"Próximos lançamentos",
+    "tagline": "Seu diário de jogos"
   },
   "nav": {
     "about": "Sobre",
@@ -12,8 +13,8 @@
     "reviews": "Reviews",
     "likes": "Curtidas",
     "language": "Idioma",
-    "signIn": "Entrar",
-    "signUp": "Cadastrar",
+    "signin": "Entrar",
+    "signup": "Cadastrar",
     "search": "Buscar",
     "search_placeholder": "Buscar jogos...",
     "clear": "Limpar"
@@ -24,5 +25,33 @@
     "description": "Avalie jogos, escreva reviews, registre suas sessões e organize sua coleção em diferentes prateleiras do que você quer comprar ao que está jogando, concluiu ou decidiu deixar de lado. Visualize seu histórico e estatísticas para decidir o próximo jogo.",
     "soon":"Em breve, a mesma experiência também para séries, filmes e livros.",
     "cta": "Crie sua conta - Grátis"
-}
+},
+"signup": {
+    "title": "Crie sua conta",
+    "subtitle": "Leva menos de um minuto.",
+    "withGoogle": "Cadastrar com o Google",
+    "withGoogleAria": "Cadastrar com o Google",
+    "or": "ou",
+    "username": { "label": "Username", "placeholder": "seu-usuario" },
+    "name": { "label": "Nome", "placeholder": "Seu nome" },
+    "email": { "label": "E-mail", "placeholder": "voce@exemplo.com" },
+    "password": { "label": "Senha", "placeholder": "Crie uma senha" },
+    "submit": "Criar conta",
+    "submitting": "Enviando...",
+    "hasAccount": "Já tem conta?",
+    "signin": "Entrar"
+  },
+  "signin": {
+    "title": "Entrar",
+    "subtitle": "Bem-vindo de volta.",
+    "withGoogle": "Entrar com o Google",
+    "withGoogleAria": "Entrar com o Google",
+    "or": "ou",
+    "identifier": { "label": "Usuário ou e-mail", "placeholder": "seu-usuario ou voce@exemplo.com" },
+    "password": { "label": "Senha", "placeholder": "Sua senha" },
+    "submit": "Entrar",
+    "submitting": "Entrando...",
+    "noAccount": "Ainda não tem conta?",
+    "signup": "Criar conta"
+  }
 }

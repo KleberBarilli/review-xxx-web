@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Button } from "@/components/ui/Button";
+import UpComingGames from "@/components/home/UpcomingGames";
 
 export default async function Home() {
   const tHome = await getTranslations("home");
@@ -42,6 +43,7 @@ export default async function Home() {
             </a>
           </Button>
         </div>
+        <UpComingGames />
       </div>
     </section>
   );

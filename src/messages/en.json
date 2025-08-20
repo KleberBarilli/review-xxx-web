@@ -2,7 +2,8 @@
   "common": {
     "brand": "Review XXX",
     "loading":"Loading...",
-    "upcomings":"Upcoming Releases"
+    "upcomings":"Upcoming Releases",
+    "tagline": "Your gaming journal"
   },
   "nav": {
     "about": "About",
@@ -12,8 +13,8 @@
     "reviews": "Reviews",
     "likes": "Likes",
     "language": "Language",
-    "signIn": "Sign in",
-    "signUp": "Sign up",
+    "signin": "Sign in",
+    "signup": "Sign up",
     "search": "Search",
     "search_placeholder": "Search games...",
     "clear": "Clear"
@@ -24,5 +25,34 @@
     "description": "Rate games, write reviews, log your sessions, and organize your collection into different shelves from what you want to buy to what you're playing, finished, or decided to set aside. View your history and stats to choose what to play next.",
     "soon":"Coming soon, the same experience for series, movies, and books..",
     "cta": "Get started now for FREE"
+  },
+  "signup": {
+    "title": "Create your account",
+    "subtitle": "It takes less than a minute.",
+    "withGoogle": "Sign up with Google",
+    "withGoogleAria": "Sign up with Google",
+    "or": "or",
+    "username": { "label": "Username", "placeholder": "your-username" },
+    "name": { "label": "Name", "placeholder": "Your name" },
+    "email": { "label": "Email", "placeholder": "you@example.com" },
+    "password": { "label": "Password", "placeholder": "Create a password" },
+    "submit": "Create account",
+    "submitting": "Submitting...",
+    "hasAccount": "Already have an account?",
+    "signin": "Sign in"
+  },
+   "signin": {
+    "title": "Sign in",
+    "subtitle": "Welcome back.",
+    "withGoogle": "Sign in with Google",
+    "withGoogleAria": "Sign in with Google",
+    "or": "or",
+    "identifier": { "label": "Username or email", "placeholder": "your-username or you@example.com" },
+    "password": { "label": "Password", "placeholder": "Your password" },
+    "submit": "Sign in",
+    "submitting": "Signing in...",
+    "noAccount": "Don’t have an account?",
+    "signup": "Create one"
   }
 }
+

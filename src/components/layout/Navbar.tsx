@@ -26,11 +26,11 @@ export default function Navbar() {
           <Link href="/" className={linkClass("/")}>
             {n("home")}
           </Link>
-          <Link href="/signIn" className={linkClass("/signIn")}>
-            {n("signIn")}
+          <Link href="/signin" className={linkClass("/signin")}>
+            {n("signin")}
           </Link>
-          <Link href="/signUp" className={linkClass("/signUp")}>
-            {n("signUp")}
+          <Link href="/signup" className={linkClass("/signup")}>
+            {n("signup")}
           </Link>
           <Link href="/games" className={linkClass("/games")}>
             {n("games")}
@@ -69,20 +69,20 @@ export default function Navbar() {
             </li>
             <li>
               <Link
-                href="/signIn"
-                className={linkClass("/signIn") + " block"}
+                href="/signin"
+                className={linkClass("/signin") + " block"}
                 onClick={() => setOpen(false)}
               >
-                {n("signIn")}
+                {n("signin")}
               </Link>
             </li>
             <li>
               <Link
-                href="/signUp"
-                className={linkClass("/signUp") + " block"}
+                href="/signup"
+                className={linkClass("/signup") + " block"}
                 onClick={() => setOpen(false)}
               >
-                {n("signUp")}
+                {n("signup")}
               </Link>
             </li>
             <li>

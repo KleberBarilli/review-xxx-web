@@ -28,7 +28,6 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Navbar />
           {children}
-          <TrendingGames />
           <SiteFooter />
         </NextIntlClientProvider>
       </body>
