@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
-import LanguageToggle from "./LanguageToggle";
-import SearchGames from "./SearchGames";
+import SearchGames from "../search/SearchGames";
 
 export default function Navbar() {
   const n = useTranslations("nav");
@@ -19,12 +18,10 @@ export default function Navbar() {
   return (
     <header className="border-foreground/10 bg-background/80 sticky top-0 z-50 w-full border-b backdrop-blur">
       <nav className="mx-auto flex h-14 max-w-6xl items-center justify-between px-4">
-        {/* Logo/brand */}
         <Link href="/" className="text-primary text-lg font-semibold">
           Review XXX
         </Link>
 
-        {/* Links (desktop) */}
         <div className="hidden items-center gap-2 md:flex">
           <Link href="/" className={linkClass("/")}>
             {n("home")}
@@ -38,15 +35,9 @@ export default function Navbar() {
           <Link href="/games" className={linkClass("/games")}>
             {n("games")}
           </Link>
-
-          <div className="ml-3">
-            <LanguageToggle />
-          </div>
-          {/* SEARCH (desktop) */}
           <SearchGames className="ml-2 w-40 lg:w-64" />
         </div>
 
-        {/* Botão hambúrguer (mobile) */}
         <button
           onClick={() => setOpen((v) => !v)}
           className="hover:bg-foreground/5 inline-flex h-10 w-10 items-center justify-center rounded-md md:hidden"
@@ -65,7 +56,6 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* Menu mobile */}
       <div
         id="mobile-menu"
         className={`md:hidden ${open ? "block" : "hidden"} border-foreground/10 bg-background border-t`}
@@ -104,11 +94,6 @@ export default function Navbar() {
                 {n("games")}
               </Link>
             </li>
-
-            <li className="mt-2">
-              <LanguageToggle />
-            </li>
-            {/* SEARCH (mobile) */}
             <li className="mt-2">
               <SearchGames className="w-full" />
             </li>

@@ -18,6 +18,8 @@
   },
   "home": {
     "title": "Your gaming journal",
-    "subtitle": "Log your sessions, reviews and lists."
+    "subtitle": "Log your sessions, reviews and lists.",
+     "description": "Rate games, write reviews, log your sessions, and organize your collection into different shelves (statuses)—from what you want to buy to what you're playing, finished, or decided to set aside. View your history and stats to choose what to play next.",
+      "soon":"Coming soon, the same experience for series, movies, and books.."
   }
 }

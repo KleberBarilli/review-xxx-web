@@ -14,7 +14,6 @@ export default function SearchGames({ className = "" }: Props) {
   function submit(e?: React.FormEvent) {
     e?.preventDefault();
     const query = q.trim();
-    // navega para a lista de jogos mantendo locale
     router.push({ pathname: "/games", query: query ? { q: query } : {} });
   }
 
@@ -31,8 +30,6 @@ export default function SearchGames({ className = "" }: Props) {
         placeholder={t("search_placeholder", { default: "Search games..." })}
         className="border-foreground/10 bg-background/60 focus:border-primary/40 focus:ring-primary/30 w-full rounded-full border py-2 pr-10 pl-9 text-sm transition outline-none focus:ring-2"
       />
-
-      {/* Lupa (submit) */}
       <button
         type="submit"
         className="text-foreground/60 hover:text-primary absolute top-1/2 left-2 inline-flex h-5 w-5 -translate-y-1/2 items-center justify-center"
@@ -47,8 +44,6 @@ export default function SearchGames({ className = "" }: Props) {
           />
         </svg>
       </button>
-
-      {/* Clear (X) */}
       {q && (
         <button
           type="button"
