@@ -17,30 +17,18 @@ export const FlagUS: React.FC<Props> = (props) => (
 );
 
 export const FlagBR: React.FC<Props> = (props) => (
-  <svg
-    viewBox="0 0 40 28" // 10:7 (mais próximo do oficial)
-    aria-hidden
-    shapeRendering="geometricPrecision"
-    {...props}
-  >
-    {/* campo verde */}
+  <svg viewBox="0 0 40 28" aria-hidden shapeRendering="geometricPrecision" {...props}>
     <rect width="40" height="28" fill="#009B3A" />
-
-    {/* losango amarelo */}
     <polygon points="20,3 36.5,14 20,25 3.5,14" fill="#FFDF00" />
 
-    {/* recorte do círculo azul */}
     <defs>
       <clipPath id="br-c">
         <circle cx="20" cy="14" r="7" />
       </clipPath>
     </defs>
 
-    {/* círculo + faixa branca curvada (recortada no círculo) */}
     <g clipPath="url(#br-c)">
       <circle cx="20" cy="14" r="7" fill="#002776" />
-
-      {/* faixa (curva) — rotacionada ~15° como na bandeira */}
       <path
         d="M6 18 C 14 9.5, 26 9.5, 34 18"
         fill="none"
@@ -50,7 +38,6 @@ export const FlagBR: React.FC<Props> = (props) => (
         transform="rotate(-15 20 14)"
       />
 
-      {/* estrelas simplificadas (pontos) — visíveis só em tamanhos >14px */}
       <g fill="#FFFFFF" opacity=".95">
         <circle cx="24.6" cy="17.7" r=".6" />
         <circle cx="22.4" cy="16.1" r=".5" />

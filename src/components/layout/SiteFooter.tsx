@@ -7,7 +7,20 @@ export default function SiteFooter() {
         <span className="text-muted-foreground text-xs">
           © {new Date().getFullYear()} Review XXX
         </span>
-        <FooterLanguageToggle />
+
+        <div className="flex items-center gap-3">
+          <a
+            href="https://www.igdb.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Powered by IGDB"
+            className="text-muted-foreground hover:text-foreground text-xs font-semibold"
+          >
+            Powered by IGDB
+          </a>
+
+          <FooterLanguageToggle />
+        </div>
       </div>
     </footer>
   );
