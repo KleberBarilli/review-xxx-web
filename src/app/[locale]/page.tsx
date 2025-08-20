@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/Button";
 
 export default async function Home() {
   const tHome = await getTranslations("home");
-  const tNav = await getTranslations("nav");
   const tCommon = await getTranslations("common");
 
   return (

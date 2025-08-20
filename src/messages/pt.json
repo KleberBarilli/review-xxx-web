@@ -1,6 +1,8 @@
 {
   "common": {
-    "brand": "Review XXX"
+    "brand": "Review XXX",
+    "loading":"Carregando...",
+    "upcomings":"Próximos lançamentos"
   },
   "nav": {
     "about": "Sobre",

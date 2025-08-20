@@ -3,8 +3,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchFeaturedGames } from "@/lib/igdb.client";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 
 export default function FeaturedGames() {
+  const tCommon = useTranslations("common");
   const [data, setData] = useState<Awaited<ReturnType<typeof fetchFeaturedGames>>>([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,16 +21,14 @@ export default function FeaturedGames() {
     })();
   }, []);
 
-  if (loading) return <div className="text-muted-foreground text-sm">Carregando…</div>;
-  if (!data.length) return <div className="text-muted-foreground text-sm">Nada por aqui.</div>;
+  if (loading) return <div className="text-muted-foreground text-sm">{tCommon("loading")}</div>;
 
   return (
     <section aria-labelledby="upcoming-heading" className="mx-auto max-w-5xl px-4 sm:px-6">
       <header className="mb-4 flex items-baseline justify-between">
         <h2 id="upcoming-heading" className="text-base font-semibold">
-          Próximos lançamentos
+          {tCommon("upcomings")}
         </h2>
-        <p className="text-muted-foreground text-xs">Seleção inicial de jogos em destaque</p>
       </header>
 
       <div className="grid [grid-template-columns:repeat(auto-fit,minmax(160px,1fr))] justify-center gap-4">
