@@ -1,4 +1,3 @@
-// app/(auth)/signup/page.tsx
 import { getTranslations } from "next-intl/server";
 import SignupForm from "@/components/auth/SignupForm";
 

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/layout/Navbar";
 import SiteFooter from "@/components/layout/SiteFooter";
-import TrendingGames from "@/components/home/UpcomingGames";
+import { ToasterProvider } from "@/components/ToasterProvider";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -28,6 +28,7 @@ export default async function RootLayout({
         <NextIntlClientProvider>
           <Navbar />
           {children}
+          <ToasterProvider />
           <SiteFooter />
         </NextIntlClientProvider>
       </body>

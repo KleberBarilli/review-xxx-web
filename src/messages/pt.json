@@ -33,13 +33,14 @@
     "withGoogleAria": "Cadastrar com o Google",
     "or": "ou",
     "username": { "label": "Username", "placeholder": "seu-usuario" },
-    "name": { "label": "Nome", "placeholder": "Seu nome" },
+    "fullName": { "label": "Nome Completo", "placeholder": "Seu nome" },
     "email": { "label": "E-mail", "placeholder": "voce@exemplo.com" },
     "password": { "label": "Senha", "placeholder": "Crie uma senha" },
     "submit": "Criar conta",
     "submitting": "Enviando...",
     "hasAccount": "Já tem conta?",
-    "signin": "Entrar"
+    "signin": "Entrar",
+    "success":"Conta criada com sucesso"
   },
   "signin": {
     "title": "Entrar",
@@ -53,5 +54,24 @@
     "submitting": "Entrando...",
     "noAccount": "Ainda não tem conta?",
     "signup": "Criar conta"
+  },
+  "errors": {
+    "E-0000": "Erro interno inesperado.",
+    "E-1000": "Nome de usuário ou e-mail já existem.",
+    "E-1010": "E-mail já cadastrado.",
+    "E-1020": "Nome de usuário já cadastrado.",
+    "E-1021":"Ocorreu um erro ao criar uma nova conta",
+    "E-1030":"Credencials inválidas, tente novamente",
+    "UNKNOWN": "Ocorreu um erro. Tente novamente."
+  },
+  "zod": {
+    "auth": {
+      "identifier": { "required": "Informe seu e-mail ou usuário" },
+      "password":   { "required": "Informe sua senha", "min": "Mínimo de {count} caracteres" },
+      "username":   { "required": "Informe um usuário", "min": "Mínimo de {count} caracteres", "max": "Máximo de {count} caracteres",     "alnum": "Use apenas letras e números (sem símbolos)" },
+      "fullName":   { "required": "Informe seu nome", "min": "Mínimo de {count} caracteres" },
+      "email":      { "required": "Informe seu e-mail", "invalid": "E-mail inválido" }
+    }
   }
 }
+

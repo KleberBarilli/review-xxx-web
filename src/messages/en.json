@@ -33,7 +33,7 @@
     "withGoogleAria": "Sign up with Google",
     "or": "or",
     "username": { "label": "Username", "placeholder": "your-username" },
-    "name": { "label": "Name", "placeholder": "Your name" },
+    "fullName": { "label": "Full Name", "placeholder": "Your name" },
     "email": { "label": "Email", "placeholder": "you@example.com" },
     "password": { "label": "Password", "placeholder": "Create a password" },
     "submit": "Create account",
@@ -52,7 +52,27 @@
     "submit": "Sign in",
     "submitting": "Signing in...",
     "noAccount": "Don’t have an account?",
-    "signup": "Create one"
+    "signup": "Create one",
+    "success":"Account successfully created"
+  },
+   "errors": {
+    "E-0000": "Unexpected internal error.",
+    "E-1000": "Username or e-mail already exists.",
+    "E-1010": "E-mail already exists.",
+    "E-1020": "Username already exists.",
+    "E-1021":"An error occurred while creating a new account",
+    "E-1030":"Invalid credentials. Please try again",
+    "UNKNOWN": "Something went wrong. Please try again."
+  },
+   "zod": {
+    "auth": {
+      "identifier": { "required": "Enter your e-mail or username" },
+      "password":   { "required": "Enter your password", "min": "At least {count} characters" },
+      "username":   { "required": "Enter a username", "min": "At least {count} characters", "max": "Up to {count} characters", "alnum": "Use letters and numbers only (no symbols)"},
+      "fullName":   { "required": "Enter your name", "min": "At least {count} characters" },
+      "email":      { "required": "Enter your e-mail", "invalid": "Invalid e-mail" }
+  
+    }
   }
 }
 

@@ -5,25 +5,68 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Link } from "@/i18n/navigation";
-import { Icon } from "@iconify/react"; // ícone colorido oficial
+import { Icon } from "@iconify/react";
 import Brand from "../layout/Brand";
+import { useRouter } from "next/navigation";
+
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+import { extractErrorCode, codeFromUnknown } from "@/lib/api/error";
+import { useErrorMessage } from "@/i18n/useErrorMessage";
+import { TOAST_DEFAULT_DURATION } from "@/constants/config";
+import { makeSignInSchema, SignInInput } from "@/lib/validation/auth";
 
 export default function SigninForm() {
   const t = useTranslations("signin");
-  const [loading, setLoading] = React.useState(false);
+  const tZod = useTranslations("zod");
+  const router = useRouter();
+  const [, setServerError] = React.useState<string | null>(null);
+  const errorMsg = useErrorMessage();
+  const schema = React.useMemo(() => makeSignInSchema(tZod), [t]);
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setLoading(true);
-    //todo api call
-    setTimeout(() => setLoading(false), 600);
-  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<SignInInput>({
+    resolver: zodResolver(schema),
+    defaultValues: { identifier: "", password: "" },
+    mode: "onBlur",
+  });
+
+  const onSubmit = handleSubmit(async (values) => {
+    setServerError(null);
+
+    try {
+      const res = await fetch("/api/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!res.ok) {
+        const code = await extractErrorCode(res);
+        const msg = errorMsg(code);
+        setServerError(msg);
+        toast.error(msg, { duration: TOAST_DEFAULT_DURATION });
+        return;
+      }
+      router.push("/");
+    } catch (err) {
+      const code = codeFromUnknown(err);
+      const msg = errorMsg(code);
+      setServerError(msg);
+      toast.error(msg, { duration: TOAST_DEFAULT_DURATION });
+    }
+  });
 
   return (
     <>
       <div className="mb-6 flex justify-center">
         <Brand centered size="lg" showTagline className="select-none" />
       </div>
+
       <Button
         asChild
         variant="outline"
@@ -56,11 +99,14 @@ export default function SigninForm() {
           </label>
           <Input
             id="identifier"
-            name="identifier"
             autoComplete="username"
             placeholder={t("identifier.placeholder")}
-            required
+            {...register("identifier")}
+            aria-invalid={!!errors.identifier}
           />
+          {errors.identifier && (
+            <p className="text-destructive text-xs">{errors.identifier.message}</p>
+          )}
         </div>
 
         <div className="grid gap-1.5">
@@ -69,17 +115,18 @@ export default function SigninForm() {
           </label>
           <Input
             id="password"
-            name="password"
             type="password"
             autoComplete="current-password"
             placeholder={t("password.placeholder")}
-            required
+            {...register("password")}
+            aria-invalid={!!errors.password}
           />
+          {errors.password && <p className="text-destructive text-xs">{errors.password.message}</p>}
         </div>
-
-        <Button type="submit" size="lg" className="mt-2 w-full rounded-xl" disabled={loading}>
-          {loading ? t("submitting") : t("submit")}
+        <Button type="submit" size="lg" className="mt-2 w-full rounded-xl" disabled={isSubmitting}>
+          {isSubmitting ? t("submitting") : t("submit")}
         </Button>
+
         <p className="text-foreground/60 mt-1 text-center text-xs">
           {t("noAccount")}{" "}
           <Link href="/signup" className="hover:text-foreground underline underline-offset-4">
