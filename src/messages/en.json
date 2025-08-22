@@ -71,7 +71,6 @@
       "username":   { "required": "Enter a username", "min": "At least {count} characters", "max": "Up to {count} characters", "alnum": "Use letters and numbers only (no symbols)"},
       "fullName":   { "required": "Enter your name", "min": "At least {count} characters" },
       "email":      { "required": "Enter your e-mail", "invalid": "Invalid e-mail" }
-  
     }
   }
 }

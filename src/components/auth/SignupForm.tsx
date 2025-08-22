@@ -139,9 +139,24 @@ export default function SignupForm() {
           />
           {errors.password && <p className="text-destructive text-xs">{errors.password.message}</p>}
         </div>
-        <Button type="submit" size="lg" className="mt-2 w-full rounded-xl" disabled={isSubmitting}>
-          {isSubmitting ? t("submitting") : t("submit")}
+        <Button
+          type="submit"
+          variant="success" // 👈 agora verde
+          size="lg"
+          disabled={isSubmitting}
+          className="mt-4 w-full gap-2"
+          aria-busy={isSubmitting}
+        >
+          {isSubmitting ? (
+            <span className="inline-flex items-center gap-2">
+              <Icon icon="svg-spinners:3-dots-scale" width={18} height={18} aria-hidden />
+              {t("submitting")}
+            </span>
+          ) : (
+            t("submit")
+          )}
         </Button>
+
         <p className="text-foreground/60 mt-1 text-center text-xs">
           {t("hasAccount")}{" "}
           <Link href="/signin" className="hover:text-foreground underline underline-offset-4">

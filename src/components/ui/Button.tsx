@@ -1,10 +1,18 @@
+// components/ui/Button.tsx
 "use client";
 
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
-export type ButtonVariant = "default" | "destructive" | "outline" | "secondary" | "ghost" | "link";
+export type ButtonVariant =
+  | "default"
+  | "destructive"
+  | "outline"
+  | "secondary"
+  | "ghost"
+  | "link"
+  | "success"; // 👈 novo
 
 export type ButtonSize = "default" | "sm" | "lg" | "icon";
 
@@ -16,6 +24,8 @@ const VARIANTS: Record<ButtonVariant, string> = {
   secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50",
   ghost: "hover:bg-foreground/5 disabled:opacity-50",
   link: "text-primary underline-offset-4 hover:underline disabled:opacity-50",
+  success:
+    "bg-emerald-600 text-white hover:bg-emerald-700 disabled:opacity-50 focus-visible:ring-emerald-500/40",
 };
 
 const SIZES: Record<ButtonSize, string> = {

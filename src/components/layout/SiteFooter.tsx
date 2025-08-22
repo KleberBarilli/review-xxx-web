@@ -1,4 +1,5 @@
 import FooterLanguageToggle from "../language/LanguageToggle";
+import { ThemeToggle } from "../theme/ThemeToggle";
 
 export default function SiteFooter() {
   return (
@@ -18,8 +19,8 @@ export default function SiteFooter() {
           >
             Powered by IGDB
           </a>
-
           <FooterLanguageToggle />
+          <ThemeToggle />
         </div>
       </div>
     </footer>
